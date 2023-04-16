@@ -21,12 +21,12 @@ public class JsonKafkaProducer {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    public void Message(User data){
+    public void sendMessage(User data){
         LOGGER.info(String.format("Message sent -> %s", data.toString()));
 
         Message<User> message = MessageBuilder
                 .withPayload(data)
-                .setHeader(KafkaHeaders.TOPIC, "comexample")
+                .setHeader(KafkaHeaders.TOPIC, "comexample_json")
                 .build();
 
         kafkaTemplate.send(message);
